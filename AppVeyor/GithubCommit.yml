@@ -10,10 +10,10 @@ on_success:
   - echo pure %access_token2%
   - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token2):x-oauth-basic@github.com`n"
   - type %USERPROFILE%\.git-credentials
-  - echo "APPVEYOR_PROJECT_ID: %APPVEYOR_PROJECT_ID%"
-  - echo "APPVEYOR_PROJECT_NAME: %APPVEYOR_PROJECT_NAME%"
-  - echo "APPVEYOR_ACCOUNT_NAME: %APPVEYOR_ACCOUNT_NAME%"
-  - echo "APPVEYOR_PROJECT_SLUG: %APPVEYOR_PROJECT_SLUG%"
+  - echo "APPVEYOR_PROJECT_ID %APPVEYOR_PROJECT_ID%"
+  - echo "APPVEYOR_PROJECT_NAME %APPVEYOR_PROJECT_NAME%"
+  - echo "APPVEYOR_ACCOUNT_NAME %APPVEYOR_ACCOUNT_NAME%"
+  - echo "APPVEYOR_PROJECT_SLUG %APPVEYOR_PROJECT_SLUG%"
   - ps: >-
       echo "read README.content.md"
       
