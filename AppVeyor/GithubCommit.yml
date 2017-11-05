@@ -30,4 +30,3 @@ on_success:
   - git add -A
   - git commit -m "[skip ci] README.md updated by AppVeyor build"
   - git push origin HEAD:%APPVEYOR_REPO_BRANCH%
-  - #git push
