@@ -1,0 +1,33 @@
+environment:
+  access_token2:
+    secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
+    
+on_success:
+  - git config --global credential.helper store
+  - git config --global user.email "no@mail.com"
+  - git config --global user.name "AppVeyor Agent"
+  - echo env %env.access_token2%
+  - echo pure %access_token2%
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token2):x-oauth-basic@github.com`n"
+  - type %USERPROFILE%\.git-credentials
+  - echo "APPVEYOR_PROJECT_ID: %APPVEYOR_PROJECT_ID%"
+  - echo "APPVEYOR_PROJECT_NAME: %APPVEYOR_PROJECT_NAME%"
+  - echo "APPVEYOR_ACCOUNT_NAME: %APPVEYOR_ACCOUNT_NAME%"
+  - echo "APPVEYOR_PROJECT_SLUG: %APPVEYOR_PROJECT_SLUG%"
+  - ps: >-
+      echo "read README.content.md"
+      
+      $readMe = Get-Content README.content.md
+      
+      echo "read build status header file"
+      
+      $header = ((Invoke-webrequest -URI "https://gist.githubusercontent.com/TFTomSun/43a9f027443fd5a8ce0738aee6160424/raw/BuildStatusSnippet.txt").Content).replace("[APPVEYOR_REPO_NAME]",$($env:APPVEYOR_REPO_NAME)).replace("[APPVEYOR_PROJECT_NAME]", $($env:APPVEYOR_PROJECT_NAME)).replace("[APPVEYOR_BUILD_VERSION]", $($env:APPVEYOR_BUILD_VERSION))
+
+      echo "Build status header is : $header"
+
+      Set-Content README.md –value $header, $readMe
+
+  - git add -A
+  - git commit -m "[skip ci] README.md updated by AppVeyor build"
+  - git push origin HEAD:%APPVEYOR_REPO_BRANCH%
+  - #git push
