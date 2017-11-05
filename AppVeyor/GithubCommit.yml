@@ -21,7 +21,7 @@ on_success:
       
       echo "read build status header file"
       
-      $header = ((Invoke-webrequest -URI "https://gist.githubusercontent.com/TFTomSun/43a9f027443fd5a8ce0738aee6160424/raw/BuildStatusSnippet.txt").Content).replace("[APPVEYOR_REPO_NAME]",$($env:APPVEYOR_REPO_NAME)).replace("[APPVEYOR_PROJECT_NAME]", $($env:APPVEYOR_PROJECT_NAME)).replace("[APPVEYOR_BUILD_VERSION]", $($env:APPVEYOR_BUILD_VERSION))
+      $header = ((Invoke-webrequest -URI "https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/BuildStatus.template.md").Content).replace("[APPVEYOR_REPO_NAME]",$($env:APPVEYOR_REPO_NAME)).replace("[APPVEYOR_PROJECT_NAME]", $($env:APPVEYOR_PROJECT_NAME)).replace("[APPVEYOR_BUILD_VERSION]", $($env:APPVEYOR_BUILD_VERSION))
 
       echo "Build status header is : $header"
 
