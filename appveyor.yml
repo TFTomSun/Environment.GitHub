@@ -1,0 +1,19 @@
+environment:
+  access_token2:
+    secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
+
+on_success:
+  - git config --global credential.helper store
+  - git config --global user.email "no@mail.com"
+  - git config --global user.name "AppVeyor Agent"
+  - echo env %env.access_token2%
+  - echo pure %access_token2%
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token2):x-oauth-basic@github.com`n"
+  - type %USERPROFILE%\.git-credentials
+  - git clone https://github.com/%APPVEYOR_REPO_NAME% C:\projects\out
+  - ps: (Get-Content README.md).replace('[MYID]', 'MyValue[MYID]') | Set-Content C:\projects\out\README.md
+  - ps: Add-Content 'C:\projects\out\test.txt' 'The Message'
+  - cd "..\out"
+  - git add -A
+  - git commit -m "[skip ci] README.md updated by AppVeyor build"
+  - git push
