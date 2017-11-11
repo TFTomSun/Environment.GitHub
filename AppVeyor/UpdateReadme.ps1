@@ -1,8 +1,7 @@
 ﻿git config --global credential.helper store
 git config --global user.email "no@mail.com"
 git config --global user.name "AppVeyor Agent"
-echo env %env.github_access_token%
-echo pure %github_access_token%
+
 Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
 Get-Content "$env:USERPROFILE\.git-credentials"
 echo "APPVEYOR_PROJECT_ID $env:APPVEYOR_PROJECT_ID"
@@ -28,4 +27,4 @@ Set-Content README.md –value $header, $readMe
 
 git add -A
 git commit -m "[skip ci] README.md updated by AppVeyor build"
-git push origin HEAD:%APPVEYOR_REPO_BRANCH%
+git push origin HEAD:$env:APPVEYOR_REPO_BRANCH
