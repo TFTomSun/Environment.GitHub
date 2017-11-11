@@ -1,4 +1,4 @@
-﻿#run tests
+﻿# run tests
 dotnet test "--logger:trx;LogFileName=results.trx"
 
 # upload results to AppVeyor
