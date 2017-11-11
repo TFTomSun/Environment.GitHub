@@ -4,13 +4,11 @@ git config --global user.name "AppVeyor Agent"
 echo env %env.github_access_token%
 echo pure %github_access_token%
 Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
-type %USERPROFILE%\.git-credentials
-echo Tralala
-echo "APPVEYOR_PROJECT_ID %APPVEYOR_PROJECT_ID%"
-echo Tralala2
-echo "APPVEYOR_PROJECT_NAME %APPVEYOR_PROJECT_NAME%"
-echo "APPVEYOR_ACCOUNT_NAME %APPVEYOR_ACCOUNT_NAME%"
-echo "APPVEYOR_PROJECT_SLUG %APPVEYOR_PROJECT_SLUG%"
+Get-Content "$env:USERPROFILE\.git-credentials"
+echo "APPVEYOR_PROJECT_ID $env:APPVEYOR_PROJECT_ID"
+echo "APPVEYOR_PROJECT_NAME $env:APPVEYOR_PROJECT_NAME"
+echo "APPVEYOR_ACCOUNT_NAME $env:APPVEYOR_ACCOUNT_NAME"
+echo "APPVEYOR_PROJECT_SLUG $env:APPVEYOR_PROJECT_SLUG"
 
 $readMeContentFileName = "README.content.md"
 echo "read $readMeContentFileName" 
