@@ -11,6 +11,7 @@ dotnet_csproj:
   file_version: '{version}'
   informational_version: '{version}'
 before_build:
+- ps: Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/AppVeyor/InvokeWebScript.ps1' -OutFile 'InvokeWebScript.ps1'  
 - cmd: nuget restore
 build:
   publish_nuget: true
@@ -20,26 +21,7 @@ build:
 before_package:
 - cmd: dotnet pack /p:Version=%APPVEYOR_BUILD_VERSION%
 test_script:
-- ps: >-
-    #run tests
-
-    dotnet test "--logger:trx;LogFileName=results.trx"
-
-
-    # upload results to AppVeyor
-
-    $files = Get-ChildItem -Path ".\" -Recurse -Include *.trx
-
-
-    $files | Foreach-Object {
-
-
-    $wc = New-Object 'System.Net.WebClient'
-
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/mstest/$($env:APPVEYOR_JOB_ID)", $_.FullName)
-
-
-    }
+- ps: Invoke-Expression "InvokeWebScript -scriptFileName RunTests.ps1"   
 artifacts:
 - path: '**\*.nupkg'
   name: NugetPackages
