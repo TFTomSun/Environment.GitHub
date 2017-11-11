@@ -1,3 +1,7 @@
+environment:
+  github_access_token:
+    secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
+
 version: 1.0.{build}
 image: Visual Studio 2017
 configuration: Release

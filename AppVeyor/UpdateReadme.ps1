@@ -1,9 +1,9 @@
 ﻿git config --global credential.helper store
 git config --global user.email "no@mail.com"
 git config --global user.name "AppVeyor Agent"
-echo env %env.access_token2%
-echo pure %access_token2%
-Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token2):x-oauth-basic@github.com`n"
+echo env %env.github_access_token%
+echo pure %github_access_token%
+Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
 type %USERPROFILE%\.git-credentials
 echo Tralala
 echo "APPVEYOR_PROJECT_ID %APPVEYOR_PROJECT_ID%"

@@ -1,14 +1,14 @@
 environment:
-  access_token2:
+  github_access_token:
     secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
     
 on_success:
   - git config --global credential.helper store
   - git config --global user.email "no@mail.com"
   - git config --global user.name "AppVeyor Agent"
-  - echo env %env.access_token2%
-  - echo pure %access_token2%
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token2):x-oauth-basic@github.com`n"
+  - echo env %env.github_access_token%
+  - echo pure %github_access_token%
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
   - type %USERPROFILE%\.git-credentials
   - echo Tralala
   - echo "APPVEYOR_PROJECT_ID %APPVEYOR_PROJECT_ID%"
