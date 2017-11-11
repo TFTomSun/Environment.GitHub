@@ -30,4 +30,4 @@ deploy:
   api_key:
     secure: 5Ct0G5LKjcTRtCJaabqaVaVgQCrQzNWjBiCbVQRj/gWRxooIw1MAoLxkyeUJi0yB
 on_success:
-  - echo Build, Test and Deployment succeeded
+  - ps: Invoke-Expression ".\InvokeWebScript.ps1 -scriptFileName UpdateReadme.ps1"
