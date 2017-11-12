@@ -1,21 +1,33 @@
 ﻿version: 1.0.{build}
 init:
 - ps: >-
-$webScriptRepository = "https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/AppVeyor/"
-function RunWebScript
-{
- Param(
- [parameter(Mandatory=$true)][String]$scriptFileName,
- [parameter(ValueFromRemainingArguments=$true)][String[]]$arguments
-    )
+    $webScriptRepository = "https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/AppVeyor/"
 
-$url = $webScriptRepository + $scriptFileName;
-$scriptFilePath = [io.path]::combine($($env:TEMP), $scriptFileName)
-# Download the script
-Invoke-WebRequest -Uri $url -OutFile $scriptFilePath
-# Invoke the script
-Invoke-Expression "$scriptFilePath $arguments"
-}
+    function RunWebScript
+
+    {
+     Param(
+     [parameter(Mandatory=$true)][String]$scriptFileName,
+     [parameter(ValueFromRemainingArguments=$true)][String[]]$arguments
+        )
+
+    $url = $webScriptRepository + $scriptFileName;
+
+    $scriptFilePath = [io.path]::combine($($env:TEMP), $scriptFileName)
+
+    # Download the script
+
+    Invoke-WebRequest -Uri $url -OutFile $scriptFilePath
+
+    # Invoke the script
+
+    Invoke-Expression "$scriptFilePath $arguments"
+
+    }
+clone_script:
+- cmd: 
+environment:
+  Test: 123
 build_script:
 - ps: RunWebScript "RunTests.ps1"
 test: off

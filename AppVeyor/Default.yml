@@ -1,28 +1,19 @@
 init:
 - ps: >-
-$webScriptRepository = "https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/AppVeyor/"
-
-function RunWebScript
-
-{
- Param(
- [parameter(Mandatory=$true)][String]$scriptFileName,
- [parameter(ValueFromRemainingArguments=$true)][String[]]$arguments
-    )
-
-$url = $webScriptRepository + $scriptFileName;
-
-$scriptFilePath = [io.path]::combine($($env:TEMP), $scriptFileName)
-
-# Download the script
-
-Invoke-WebRequest -Uri $url -OutFile $scriptFilePath
-
-# Invoke the script
-
-Invoke-Expression "$scriptFilePath $arguments"
-
-}
+    $webScriptRepository = "https://raw.githubusercontent.com/TFTomSun/Environment.GitHub/master/AppVeyor/"
+    function RunWebScript
+    {
+     Param(
+     [parameter(Mandatory=$true)][String]$scriptFileName,
+     [parameter(ValueFromRemainingArguments=$true)][String[]]$arguments
+        )
+    $url = $webScriptRepository + $scriptFileName;
+    $scriptFilePath = [io.path]::combine($($env:TEMP), $scriptFileName)
+    # Download the script
+    Invoke-WebRequest -Uri $url -OutFile $scriptFilePath
+    # Invoke the script
+    Invoke-Expression "$scriptFilePath $arguments"
+    }
 environment:
   github_access_token:
     secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
