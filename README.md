@@ -1,6 +1,6 @@
 # Environment.GitHub
 
-Important! The one click build setup works only in my environment. It is planned to make it common enough to be reusable in other projects.
+Important! The one click build setup works currently only in my environment. It is planned to make it common enough to be reusable in other projects.
 
 setup a new build 
 * Important! In case you have already a ReadMe.md file, copy your Readme.md content to Readme.content.md. The build will overwrite the ReadMe.md file.
