@@ -9,10 +9,13 @@ echo "APPVEYOR_PROJECT_NAME $env:APPVEYOR_PROJECT_NAME"
 echo "APPVEYOR_ACCOUNT_NAME $env:APPVEYOR_ACCOUNT_NAME"
 echo "APPVEYOR_PROJECT_SLUG $env:APPVEYOR_PROJECT_SLUG"
 echo "APPVEYOR_REPO_BRANCH $env:APPVEYOR_REPO_BRANCH"
+echo "APPVEYOR_BUILD_FOLDER $env:APPVEYOR_BUILD_FOLDER"
+
+Push-Location $($env:APPVEYOR_BUILD_FOLDER)
 
 $readMeContentFileName = "README.content.md"
 echo "read $readMeContentFileName" 
-if([System.IO.File]::Exists($readMeContentFileName)){
+if(Test-Path $readMeContentFileName){
 	$readMe = Get-Content $readMeContentFileName
 }
 else{
