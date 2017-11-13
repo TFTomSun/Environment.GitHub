@@ -1,3 +1,10 @@
+# BuildStatus for Build 1.0.22
+
+[![Build status](https://img.shields.io/appveyor/ci/TFTomSun/environment-github.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
+[![Test status](https://img.shields.io/appveyor/tests/TFTomSun/environment-github.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
+[![NuGet](https://img.shields.io/nuget/v/TomSun.Environment.GitHub.svg?style=flat-square)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
+[![NuGet Dowloads](https://img.shields.io/nuget/dt/TomSun.Environment.GitHub.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
+
 # Environment.GitHub
 
 Important! The one click build setup works currently only in my environment. It is planned to make it common enough to be reusable in other projects.
