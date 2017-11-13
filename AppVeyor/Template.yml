@@ -24,10 +24,9 @@ init:
     Invoke-Expression "$scriptFilePath $arguments"
 
     }
-clone_script:
-- cmd: 
 environment:
-  Test: 123
+  github_access_token:
+    secure: pMOhRHsCASP9OJwLDjK+HLGcRbVO4msB9qVWaLP66kTWau5FVYvTuKWK33PyTNhE
 build_script:
-- ps: RunWebScript "RunTests.ps1"
+  - ps: RunWebScript "UpdateReadme.ps1"
 test: off
