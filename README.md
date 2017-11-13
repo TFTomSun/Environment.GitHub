@@ -1,7 +1,7 @@
-# BuildStatus for Build 1.0.25
+# BuildStatus for Build 1.0.26
 
-[![Build status](https://img.shields.io/appveyor/ci/TFTomSun/environment-github.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
-[![Test status](https://img.shields.io/appveyor/tests/TFTomSun/environment-github.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
+[![Build status](https://img.shields.io/appveyor/ci/TFTomSun/environment-github.svg)](https://ci.appveyor.com/project/TFTomSun/environment-github) 
+[![Test status](https://img.shields.io/appveyor/tests/TFTomSun/environment-github.svg)](https://ci.appveyor.com/project/TFTomSun/environment-github/build/tests)
 [![NuGet](https://img.shields.io/nuget/v/TomSun.Environment.GitHub.svg?style=flat-square)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
 [![NuGet Dowloads](https://img.shields.io/nuget/dt/TomSun.Environment.GitHub.svg)](https://www.nuget.org/packages/TomSun.Environment.GitHub/) 
 
