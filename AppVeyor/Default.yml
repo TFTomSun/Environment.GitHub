@@ -47,7 +47,7 @@ build:
   include_nuget_references: true
   verbosity: minimal
 before_package:
-- cmd: dotnet pack /p:Version=%APPVEYOR_BUILD_VERSION%
+- cmd: dotnet pack --no-build /p:Version=%APPVEYOR_BUILD_VERSION%
 test_script:
 - ps: RunWebScript "RunTests.ps1"   
 artifacts:
