@@ -1,5 +1,5 @@
 ﻿# run tests
-dotnet test "--logger:trx;LogFileName=results.trx"
+dotnet test --no-build "--logger:trx;LogFileName=results.trx"
 
 # upload results to AppVeyor
 $files = Get-ChildItem -Path ".\" -Recurse -Include *.trx
