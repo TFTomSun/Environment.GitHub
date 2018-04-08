@@ -42,10 +42,9 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-# before_build:
-# - cmd: nuget restore
+ before_build:
+ - cmd: nuget restore
 build:
-  project: '**\TomSun.All.sln'
   publish_nuget: true
   publish_nuget_symbols: true
   include_nuget_references: true
