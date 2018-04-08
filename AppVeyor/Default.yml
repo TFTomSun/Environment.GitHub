@@ -45,7 +45,7 @@ dotnet_csproj:
 # before_build:
 # - cmd: nuget restore
 build:
-  project: '**\TomSun.%APPVEYOR_PROJECT_NAME%.sln'
+  project: '**\TomSun.All.sln'
   publish_nuget: true
   publish_nuget_symbols: true
   include_nuget_references: true
